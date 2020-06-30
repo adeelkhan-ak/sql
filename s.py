@@ -9,9 +9,8 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## first we have to 'drop' the table which has already created to create it again with the 'PRIMARY KEY'
-## 'DROP TABLE table_name' statement will drop the table from a database
-cursor.execute("DROP TABLE users")
+## 'DESC table_name' is used to get all columns information
+cursor.execute("DESC users")
 
-## creating the 'users' table again with the 'PRIMARY KEY'
-cursor.execute("CREATE TABLE users (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), user_name VARCHAR(255))")
+## it will print all the columns as 'tuples' in a list
+print(cursor.fetchall())
