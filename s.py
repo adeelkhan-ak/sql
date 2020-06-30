@@ -9,11 +9,9 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## getting all the tables which are present in 'datacamp' database
-cursor.execute("SHOW TABLES")
+## first we have to 'drop' the table which has already created to create it again with the 'PRIMARY KEY'
+## 'DROP TABLE table_name' statement will drop the table from a database
+cursor.execute("DROP TABLE users")
 
-tables = cursor.fetchall() ## it returns list of tables present in the database
-
-## showing all the tables one by one
-for table in tables:
-    print(table)
+## creating the 'users' table again with the 'PRIMARY KEY'
+cursor.execute("CREATE TABLE users (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), user_name VARCHAR(255))")
