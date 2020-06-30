@@ -10,14 +10,10 @@ db = mysql.connect(
 cursor = db.cursor()
 
 ## defining the Query
-query = "SELECT * FROM users ORDER BY name DESC"
+query = "DELETE FROM users WHERE id = 5"
 
-## getting records from the table
+## executing the query
 cursor.execute(query)
 
-## fetching all records from the 'cursor' object
-records = cursor.fetchall()
-
-## Showing the data
-for record in records:
-    print(record)
+## final step to tell the database that we have changed the table data
+db.commit()
