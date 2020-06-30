@@ -10,14 +10,14 @@ db = mysql.connect(
 cursor = db.cursor()
 
 ## defining the Query
-query = "SELECT name, user_name FROM users"
+query = "SELECT * FROM users WHERE id = 5"
 
-## getting 'name', 'user_name' columns from the table
+## getting records from the table
 cursor.execute(query)
 
 ## fetching all records from the 'cursor' object
-data = cursor.fetchall()
+records = cursor.fetchall()
 
 ## Showing the data
-for pair in data:
-    print(pair)
+for record in records:
+    print(record)
