@@ -9,8 +9,9 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## dropping the 'id' column
-cursor.execute("ALTER TABLE users DROP id")
+## adding 'id' column to the 'users' table
+## 'FIRST' keyword in the statement will add a column in the starting of the table
+cursor.execute("ALTER TABLE users ADD COLUMN id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST")
 
 cursor.execute("DESC users")
 
