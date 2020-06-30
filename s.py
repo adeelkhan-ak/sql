@@ -9,5 +9,11 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## creating a table called 'users' in the 'datacamp' database
-cursor.execute("CREATE TABLE users (name VARCHAR(255), user_name VARCHAR(255))")
+## getting all the tables which are present in 'datacamp' database
+cursor.execute("SHOW TABLES")
+
+tables = cursor.fetchall() ## it returns list of tables present in the database
+
+## showing all the tables one by one
+for table in tables:
+    print(table)
