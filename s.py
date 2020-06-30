@@ -6,3 +6,8 @@ db = mysql.connect(
     passwd = "asdf",
     database = "datacamp"
 )
+
+cursor = db.cursor()
+
+## creating a table called 'users' in the 'datacamp' database
+cursor.execute("CREATE TABLE users (name VARCHAR(255), user_name VARCHAR(255))")
