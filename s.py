@@ -9,10 +9,15 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## adding 'id' column to the 'users' table
-## 'FIRST' keyword in the statement will add a column in the starting of the table
-cursor.execute("ALTER TABLE users ADD COLUMN id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST")
+## defining the Query
+query = "INSERT INTO users (name, user_name) VALUES (%s, %s)"
+## storing values in a variable
+values = ("Hafeez", "hafeez")
 
-cursor.execute("DESC users")
+## executing the query with values
+cursor.execute(query, values)
 
-print(cursor.fetchall())
+## to make final output we have to run the 'commit()' method of the database object
+db.commit()
+
+print(cursor.rowcount, "record inserted")
