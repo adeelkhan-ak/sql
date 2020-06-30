@@ -9,8 +9,9 @@ db = mysql.connect(
 
 cursor = db.cursor()
 
-## 'DESC table_name' is used to get all columns information
+## dropping the 'id' column
+cursor.execute("ALTER TABLE users DROP id")
+
 cursor.execute("DESC users")
 
-## it will print all the columns as 'tuples' in a list
 print(cursor.fetchall())
