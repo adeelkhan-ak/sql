@@ -10,19 +10,14 @@ db = mysql.connect(
 cursor = db.cursor()
 
 ## defining the Query
-query = "INSERT INTO users (name, user_name) VALUES (%s, %s)"
-## storing values in a variable
-values = [
-    ("Peter", "peter"),
-    ("Amy", "amy"),
-    ("Michael", "michael"),
-    ("Hennah", "hennah")
-]
+query = "SELECT * FROM users"
 
-## executing the query with values
-cursor.executemany(query, values)
+## getting records from the table
+cursor.execute(query)
 
-## to make final output we have to run the 'commit()' method of the database object
-db.commit()
+## fetching all records from the 'cursor' object
+records = cursor.fetchall()
 
-print(cursor.rowcount, "records inserted")
+## Showing the data
+for record in records:
+    print(record)
