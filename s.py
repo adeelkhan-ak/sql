@@ -12,12 +12,17 @@ cursor = db.cursor()
 ## defining the Query
 query = "INSERT INTO users (name, user_name) VALUES (%s, %s)"
 ## storing values in a variable
-values = ("Hafeez", "hafeez")
+values = [
+    ("Peter", "peter"),
+    ("Amy", "amy"),
+    ("Michael", "michael"),
+    ("Hennah", "hennah")
+]
 
 ## executing the query with values
-cursor.execute(query, values)
+cursor.executemany(query, values)
 
 ## to make final output we have to run the 'commit()' method of the database object
 db.commit()
 
-print(cursor.rowcount, "record inserted")
+print(cursor.rowcount, "records inserted")
