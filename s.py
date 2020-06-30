@@ -10,7 +10,7 @@ db = mysql.connect(
 cursor = db.cursor()
 
 ## defining the Query
-query = "SELECT * FROM users WHERE id = 5"
+query = "SELECT * FROM users ORDER BY name"
 
 ## getting records from the table
 cursor.execute(query)
